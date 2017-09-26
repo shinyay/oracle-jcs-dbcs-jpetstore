@@ -16,6 +16,33 @@ Overview
 ## Usage
 
 ## Installation
+### DataSource
+#### WebLogic
+
+|Property|Value|
+|--------|-----|
+|DS Name|PetStoreDS|
+|JNDI Name|jdbc/PetstoreDB|
+|Driver|Oracle's Driver(Thin) for Service connections; Version:Any|
+|Driver Name|oracle.jdbc.OracleDriver|
+|Database Name|PDB1.jptest01.oraclecloud.internal|
+|Host Name|${DBCS-Host-Name}|
+|Port|1521|
+|Database User Name|petstore|
+|Password|${SYS-Password}|
+|JDBC URL|jdbc:oracle:thin:@//${DBCS-Host-Name}:1521/PDB1.jptest01.oraclecloud.internal|
+
+#### JPetStpre
+
+- applicationContext.xml
+
+```
+    <bean id="dataSource"
+          class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="jdbc/PetstoreDB"/>
+    </bean>
+    <bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager"/>
+```
 
 ## Licence
 
